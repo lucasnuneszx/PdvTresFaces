@@ -37,7 +37,7 @@ interface SystemSettings {
 
 export default function SettingsPage() {
   const [settings, setSettings] = useState<SystemSettings>({
-    restaurantName: 'Central Das Pizzas',
+    restaurantName: 'Estabelecimento',
     restaurantAddress: '',
     restaurantPhone: '',
     restaurantEmail: '',
@@ -193,7 +193,7 @@ export default function SettingsPage() {
                     id="restaurantName"
                     value={settings.restaurantName}
                     onChange={(e) => setSettings(prev => ({ ...prev, restaurantName: e.target.value }))}
-                    placeholder="Ex: Central Das Pizzas"
+                    placeholder="Ex: Estabelecimento"
                   />
                 </div>
                 <div>
@@ -224,7 +224,7 @@ export default function SettingsPage() {
                   type="email"
                   value={settings.restaurantEmail || ''}
                   onChange={(e) => setSettings(prev => ({ ...prev, restaurantEmail: e.target.value }))}
-                  placeholder="contato@centraldaspizzas.com"
+                  placeholder="contato@estabelecimento.com"
                 />
               </div>
             </CardContent>

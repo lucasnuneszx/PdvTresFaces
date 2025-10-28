@@ -14,28 +14,28 @@ async function createAdminUsers() {
     const users = [
       {
         name: 'Administrador',
-        email: 'admin@centraldaspizzas.com',
+        email: 'admin@estabelecimento.com',
         password: hashedPassword,
         role: 'ADMIN',
         phone: '(11) 99999-0001'
       },
       {
         name: 'Gerente',
-        email: 'gerente@centraldaspizzas.com',
+        email: 'gerente@estabelecimento.com',
         password: hashedPassword,
         role: 'MANAGER',
         phone: '(11) 99999-0002'
       },
       {
         name: 'Caixa',
-        email: 'caixa@centraldaspizzas.com',
+        email: 'caixa@estabelecimento.com',
         password: hashedPassword,
         role: 'CASHIER',
         phone: '(11) 99999-0003'
       },
       {
         name: 'Cozinha',
-        email: 'cozinha@centraldaspizzas.com',
+        email: 'cozinha@estabelecimento.com',
         password: hashedPassword,
         role: 'KITCHEN',
         phone: '(11) 99999-0004'
@@ -61,21 +61,21 @@ async function createAdminUsers() {
     console.log('\n🎉 Usuários administrativos criados com sucesso!')
     console.log('\n📋 Credenciais de acesso:')
     console.log('┌─────────────────────────────────────────────────────────┐')
-    console.log('│                    CENTRAL DAS PIZZAS                    │')
+    console.log('│                    ESTABELECIMENTO                       │')
     console.log('├─────────────────────────────────────────────────────────┤')
-    console.log('│ Email: admin@centraldaspizzas.com                       │')
+    console.log('│ Email: admin@estabelecimento.com                        │')
     console.log('│ Senha: 123456                                          │')
     console.log('│ Função: Administrador                                   │')
     console.log('├─────────────────────────────────────────────────────────┤')
-    console.log('│ Email: gerente@centraldaspizzas.com                     │')
+    console.log('│ Email: gerente@estabelecimento.com                      │')
     console.log('│ Senha: 123456                                          │')
     console.log('│ Função: Gerente                                         │')
     console.log('├─────────────────────────────────────────────────────────┤')
-    console.log('│ Email: caixa@centraldaspizzas.com                       │')
+    console.log('│ Email: caixa@estabelecimento.com                        │')
     console.log('│ Senha: 123456                                          │')
     console.log('│ Função: Caixa                                           │')
     console.log('├─────────────────────────────────────────────────────────┤')
-    console.log('│ Email: cozinha@centraldaspizzas.com                     │')
+    console.log('│ Email: cozinha@estabelecimento.com                      │')
     console.log('│ Senha: 123456                                          │')
     console.log('│ Função: Cozinha                                         │')
     console.log('└─────────────────────────────────────────────────────────┘')

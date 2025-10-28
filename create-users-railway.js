@@ -19,21 +19,21 @@ async function createUsers() {
     const users = [
       {
         name: 'Administrador',
-        email: 'admin@centraldaspizzas.com',
+        email: 'admin@estabelecimento.com',
         password: hashedPassword,
         role: 'ADMIN',
         phone: '(11) 99999-0001'
       },
       {
         name: 'Gerente',
-        email: 'gerente@centraldaspizzas.com',
+        email: 'gerente@estabelecimento.com',
         password: hashedPassword,
         role: 'MANAGER',
         phone: '(11) 99999-0002'
       },
       {
         name: 'Caixa',
-        email: 'caixa@centraldaspizzas.com',
+        email: 'caixa@estabelecimento.com',
         password: hashedPassword,
         role: 'CASHIER',
         phone: '(11) 99999-0003'
@@ -61,9 +61,9 @@ async function createUsers() {
 
     console.log('\n🎉 Usuários criados!')
     console.log('\n📋 Use estes logins:')
-    console.log('Email: admin@centraldaspizzas.com | Senha: 123456')
-    console.log('Email: gerente@centraldaspizzas.com | Senha: 123456')
-    console.log('Email: caixa@centraldaspizzas.com | Senha: 123456')
+    console.log('Email: admin@estabelecimento.com | Senha: 123456')
+    console.log('Email: gerente@estabelecimento.com | Senha: 123456')
+    console.log('Email: caixa@estabelecimento.com | Senha: 123456')
 
   } catch (error) {
     console.error('❌ Erro:', error)

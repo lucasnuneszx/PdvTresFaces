@@ -33,7 +33,7 @@ export function SiteLogo({ className = '' }: SiteLogoProps) {
     return (
       <div className={`flex items-center space-x-2 ${className}`}>
         <div className="w-8 h-8 bg-gray-200 rounded animate-pulse"></div>
-        <span className="text-sm font-medium text-gray-600">Central das Pizzas</span>
+        <span className="text-sm font-medium text-gray-600">Estabelecimento</span>
       </div>
     )
   }
@@ -44,7 +44,7 @@ export function SiteLogo({ className = '' }: SiteLogoProps) {
         <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
           <span className="text-white font-bold text-sm">C</span>
         </div>
-        <span className="text-sm font-medium text-gray-600">Central das Pizzas</span>
+        <span className="text-sm font-medium text-gray-600">Estabelecimento</span>
       </div>
     )
   }
@@ -54,13 +54,13 @@ export function SiteLogo({ className = '' }: SiteLogoProps) {
       <div className="relative w-8 h-8">
         <Image
           src={logoUrl}
-          alt="Central das Pizzas"
+          alt="Estabelecimento"
           fill
           className="object-contain rounded"
           sizes="32px"
         />
       </div>
-      <span className="text-sm font-medium text-gray-600">Central das Pizzas</span>
+      <span className="text-sm font-medium text-gray-600">Estabelecimento</span>
     </div>
   )
 }

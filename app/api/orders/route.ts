@@ -99,14 +99,14 @@ export async function POST(request: NextRequest) {
 
         // Buscar ou criar usuário público
         let publicUser = await prisma.user.findUnique({
-          where: { email: 'public@centraldaspizzas.com' }
+          where: { email: 'public@estabelecimento.com' }
         })
 
         if (!publicUser) {
           console.log('Criando usuário público')
           publicUser = await prisma.user.create({
             data: {
-              email: 'public@centraldaspizzas.com',
+              email: 'public@estabelecimento.com',
               name: 'Cliente Público',
               role: 'CLIENT',
               isActive: true

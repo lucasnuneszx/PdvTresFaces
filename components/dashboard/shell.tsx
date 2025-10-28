@@ -45,7 +45,7 @@ export function DashboardShell({ children }: PropsWithChildren) {
             <Home className="h-6 w-6" />
           </div>
           <div>
-            <div className="font-semibold">Central das Pizzas</div>
+            <div className="font-semibold">Estabelecimento</div>
             <div className="text-xs text-muted-foreground">Sistema PDV</div>
           </div>
         </div>

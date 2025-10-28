@@ -12,10 +12,10 @@ async function populateMenuData() {
       update: {},
       create: {
         id: 'default',
-        restaurantName: 'Central Das Pizzas Avenida Sul',
+        restaurantName: 'Estabelecimento',
         restaurantAddress: 'Avenida Sul, Centro',
         restaurantPhone: '(11) 99999-9999',
-        restaurantEmail: 'contato@centraldaspizzas.com',
+        restaurantEmail: 'contato@estabelecimento.com',
         deliveryFee: 5.00,
         minOrderValue: 25.00,
         taxRate: 0,
@@ -29,18 +29,18 @@ async function populateMenuData() {
     // Criar categorias
     const categories = [
       {
-        name: 'Pizzas Tradicionais',
-        description: 'Nossas pizzas mais populares',
+        name: 'Pratos Tradicionais',
+        description: 'Nossos pratos mais populares',
         image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop'
       },
       {
-        name: 'Pizzas Especiais',
-        description: 'Pizzas com ingredientes especiais',
+        name: 'Pratos Especiais',
+        description: 'Pratos com ingredientes especiais',
         image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop'
       },
       {
-        name: 'Pizzas Doces',
-        description: 'Pizzas doces para sobremesa',
+        name: 'Sobremesas',
+        description: 'Sobremesas deliciosas',
         image: 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400&h=300&fit=crop'
       },
       {
@@ -66,71 +66,71 @@ async function populateMenuData() {
     const combos = [
       // Pizzas Tradicionais
       {
-        name: 'Pizza Margherita',
+        name: 'Prato Margherita',
         description: 'Molho de tomate, mussarela, manjericão e azeite',
         price: 32.90,
         image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop',
-        categoryName: 'Pizzas Tradicionais'
+        categoryName: 'Pratos Tradicionais'
       },
       {
-        name: 'Pizza Portuguesa',
+        name: 'Prato Português',
         description: 'Presunto, ovos, cebola, azeitona, mussarela e molho de tomate',
         price: 38.90,
         image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop',
-        categoryName: 'Pizzas Tradicionais'
+        categoryName: 'Pratos Tradicionais'
       },
       {
-        name: 'Pizza Calabresa',
+        name: 'Prato Calabresa',
         description: 'Calabresa, cebola, mussarela e molho de tomate',
         price: 35.90,
         image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop',
-        categoryName: 'Pizzas Tradicionais'
+        categoryName: 'Pratos Tradicionais'
       },
       {
-        name: 'Pizza Frango com Catupiry',
+        name: 'Prato Frango com Catupiry',
         description: 'Frango desfiado, catupiry, mussarela e molho de tomate',
         price: 39.90,
         image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop',
-        categoryName: 'Pizzas Tradicionais'
+        categoryName: 'Pratos Tradicionais'
       },
 
       // Pizzas Especiais
       {
-        name: 'Pizza Quatro Queijos',
+        name: 'Prato Quatro Queijos',
         description: 'Mussarela, gorgonzola, parmesão, provolone e molho de tomate',
         price: 42.90,
         image: 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400&h=300&fit=crop',
-        categoryName: 'Pizzas Especiais'
+        categoryName: 'Pratos Especiais'
       },
       {
-        name: 'Pizza Bacon com Cheddar',
+        name: 'Prato Bacon com Cheddar',
         description: 'Bacon, cheddar, mussarela e molho de tomate',
         price: 44.90,
         image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop',
-        categoryName: 'Pizzas Especiais'
+        categoryName: 'Pratos Especiais'
       },
       {
-        name: 'Pizza Camarão',
+        name: 'Prato Camarão',
         description: 'Camarão, catupiry, mussarela e molho de tomate',
         price: 52.90,
         image: 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400&h=300&fit=crop',
-        categoryName: 'Pizzas Especiais'
+        categoryName: 'Pratos Especiais'
       },
 
       // Pizzas Doces
       {
-        name: 'Pizza de Chocolate',
+        name: 'Sobremesa de Chocolate',
         description: 'Chocolate, morangos e chantilly',
         price: 28.90,
         image: 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400&h=300&fit=crop',
-        categoryName: 'Pizzas Doces'
+        categoryName: 'Sobremesas'
       },
       {
-        name: 'Pizza de Banana',
+        name: 'Sobremesa de Banana',
         description: 'Banana, canela, açúcar e leite condensado',
         price: 26.90,
         image: 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400&h=300&fit=crop',
-        categoryName: 'Pizzas Doces'
+        categoryName: 'Sobremesas'
       },
 
       // Bebidas

@@ -33,11 +33,11 @@ interface PrintSettings {
 }
 
 const defaultSettings: PrintSettings = {
-  restaurantName: 'CENTRAL DAS PIZZAS',
+  restaurantName: 'ESTABELECIMENTO',
   restaurantAddress: 'Rua das Pizzas, 123 - Centro',
   restaurantPhone: '(11) 99999-9999',
-  restaurantEmail: 'contato@centraldaspizzas.com',
-  headerText: 'Bem-vindo à Central das Pizzas!',
+  restaurantEmail: 'contato@estabelecimento.com',
+  headerText: 'Bem-vindo ao Estabelecimento!',
   footerText: 'Obrigado pela preferência!',
   kitchenHeader: 'PEDIDO PARA COZINHA',
   receiptHeader: 'CUPOM FISCAL',

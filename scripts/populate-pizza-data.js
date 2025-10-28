@@ -4,12 +4,12 @@ const prisma = new PrismaClient()
 
 async function populatePizzaData() {
   try {
-    console.log('🍕 Populando dados de pizza com tamanhos e sabores...')
+    console.log('🍽️ Populando dados de pratos com tamanhos e sabores...')
 
     // Pular configurações por enquanto - focar nos sabores e tamanhos
     console.log('⚠️ Pulando configurações por enquanto...')
 
-    // Criar sabores de pizza
+    // Criar sabores de pratos
     const flavors = [
       // Tradicionais
       { name: 'Margherita', description: 'Molho de tomate, mussarela, manjericão e azeite', type: 'TRADICIONAL' },
@@ -65,24 +65,24 @@ async function populatePizzaData() {
       })
     }
 
-    console.log(`✅ ${flavors.length} sabores de pizza criados`)
+    console.log(`✅ ${flavors.length} sabores de pratos criados`)
 
-    // Buscar ou criar categoria de pizza
+    // Buscar ou criar categoria de pratos
     let pizzaCategory = await prisma.category.findFirst({
-      where: { name: 'Pizzas' }
+      where: { name: 'Pratos' }
     })
 
     if (!pizzaCategory) {
       pizzaCategory = await prisma.category.create({
         data: {
-          name: 'Pizzas',
-          description: 'Pizzas tradicionais, especiais e doces',
+          name: 'Pratos',
+          description: 'Pratos tradicionais, especiais e doces',
           image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop'
         }
       })
     }
 
-    // Atualizar combos existentes para marcar pizzas
+    // Atualizar combos existentes para marcar pratos
     const existingCombos = await prisma.combo.findMany({
       where: {
         categoryId: pizzaCategory.id
@@ -96,10 +96,10 @@ async function populatePizzaData() {
       })
     }
 
-    // Criar combo de pizza base se não existir
+    // Criar combo de prato base se não existir
     let pizzaCombo = await prisma.combo.findFirst({
-      where: { 
-        name: 'Pizza Personalizada',
+      where: {
+        name: 'Prato Personalizado',
         categoryId: pizzaCategory.id
       }
     })
@@ -107,8 +107,8 @@ async function populatePizzaData() {
     if (!pizzaCombo) {
       pizzaCombo = await prisma.combo.create({
         data: {
-          name: 'Pizza Personalizada',
-          description: 'Escolha o tamanho e os sabores da sua pizza',
+          name: 'Prato Personalizado',
+          description: 'Escolha o tamanho e os sabores do seu prato',
           price: 0, // Preço será calculado dinamicamente
           image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop',
           categoryId: pizzaCategory.id,
@@ -118,12 +118,12 @@ async function populatePizzaData() {
       })
     }
 
-    // Limpar tamanhos existentes para esta pizza
+    // Limpar tamanhos existentes para este prato
     await prisma.pizzaSize.deleteMany({
       where: { comboId: pizzaCombo.id }
     })
 
-    // Criar tamanhos de pizza
+    // Criar tamanhos de pratos
     const sizes = [
       { name: 'Pequena', slices: 4, maxFlavors: 2, basePrice: 25.00 },
       { name: 'Média', slices: 6, maxFlavors: 2, basePrice: 35.00 },
@@ -144,13 +144,13 @@ async function populatePizzaData() {
       })
     }
 
-    console.log(`✅ ${sizes.length} tamanhos de pizza criados`)
+    console.log(`✅ ${sizes.length} tamanhos de pratos criados`)
 
-    console.log('🎉 Dados de pizza populados com sucesso!')
-    console.log('📱 Acesse /client/menu para ver as opções de pizza')
+    console.log('🎉 Dados de pratos populados com sucesso!')
+    console.log('📱 Acesse /client/menu para ver as opções de pratos')
 
   } catch (error) {
-    console.error('❌ Erro ao popular dados de pizza:', error)
+    console.error('❌ Erro ao popular dados de pratos:', error)
   } finally {
     await prisma.$disconnect()
   }

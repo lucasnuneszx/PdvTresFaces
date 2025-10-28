@@ -44,7 +44,7 @@ export default function SignIn() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 fade-in">
         <div className="text-center slide-in">
-          <h1 className="text-3xl font-bold text-gray-900 hover-lift">Central Das Pizzas</h1>
+          <h1 className="text-3xl font-bold text-gray-900 hover-lift">Estabelecimento</h1>
           <p className="mt-2 text-sm text-gray-600 fade-in">Sistema PDV</p>
         </div>
         

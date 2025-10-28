@@ -9,9 +9,9 @@ async function updateCategoryOrder() {
     // Definir a ordem desejada
     const categoryOrder = [
       { name: 'Combos', order: 1 },
-      { name: 'Pizzas Tradicionais', order: 2 },
-      { name: 'Pizzas Especiais', order: 3 },
-      { name: 'Pizzas Doces', order: 4 },
+      { name: 'Pratos Tradicionais', order: 2 },
+      { name: 'Pratos Especiais', order: 3 },
+      { name: 'Sobremesas', order: 4 },
       { name: 'Hambúrgueres', order: 5 },
       { name: 'Bebidas', order: 6 }
     ]

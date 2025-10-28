@@ -13,7 +13,7 @@ export default function CredentialsPage() {
   const credentials = [
     {
       role: 'Administrador',
-      email: 'admin@centraldaspizzas.com',
+      email: 'admin@estabelecimento.com',
       password: '123456',
       icon: Shield,
       color: 'from-red-500 to-red-600',
@@ -21,7 +21,7 @@ export default function CredentialsPage() {
     },
     {
       role: 'Gerente',
-      email: 'gerente@centraldaspizzas.com',
+      email: 'gerente@estabelecimento.com',
       password: '123456',
       icon: User,
       color: 'from-blue-500 to-blue-600',
@@ -29,7 +29,7 @@ export default function CredentialsPage() {
     },
     {
       role: 'Caixa',
-      email: 'caixa@centraldaspizzas.com',
+      email: 'caixa@estabelecimento.com',
       password: '123456',
       icon: CreditCard,
       color: 'from-green-500 to-green-600',
@@ -37,7 +37,7 @@ export default function CredentialsPage() {
     },
     {
       role: 'Cozinha',
-      email: 'cozinha@centraldaspizzas.com',
+      email: 'cozinha@estabelecimento.com',
       password: '123456',
       icon: ChefHat,
       color: 'from-orange-500 to-orange-600',

@@ -9,8 +9,8 @@ async function createSampleData() {
     // Criar categorias
     const categories = [
       {
-        name: 'Pizzas',
-        description: 'Pizzas tradicionais e especiais',
+        name: 'Pratos',
+        description: 'Pratos tradicionais e especiais',
         image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400'
       },
       {
@@ -37,14 +37,14 @@ async function createSampleData() {
     // Criar combos
     const combos = [
       {
-        name: 'Pizza Margherita',
+        name: 'Prato Margherita',
         description: 'Molho de tomate, mussarela, manjericão fresco e azeite',
         price: 29.90,
         image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400',
         categoryId: createdCategories[0].id
       },
       {
-        name: 'Pizza Calabresa',
+        name: 'Prato Calabresa',
         description: 'Molho de tomate, mussarela, calabresa e cebola',
         price: 32.90,
         image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',
@@ -52,14 +52,14 @@ async function createSampleData() {
       },
       {
         name: 'Combo Margherita + Refrigerante',
-        description: 'Pizza Margherita + Refrigerante 350ml',
+        description: 'Prato Margherita + Refrigerante 350ml',
         price: 35.90,
         image: 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400',
         categoryId: createdCategories[1].id
       },
       {
         name: 'Combo Calabresa + Refrigerante',
-        description: 'Pizza Calabresa + Refrigerante 350ml',
+        description: 'Prato Calabresa + Refrigerante 350ml',
         price: 38.90,
         image: 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400',
         categoryId: createdCategories[1].id

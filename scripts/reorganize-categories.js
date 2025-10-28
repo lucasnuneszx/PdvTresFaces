@@ -19,18 +19,18 @@ async function reorganizeCategories() {
         image: 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400&h=300&fit=crop'
       },
       {
-        name: 'Pizzas Tradicionais',
-        description: 'Nossas pizzas mais populares',
+        name: 'Pratos Tradicionais',
+        description: 'Nossos pratos mais populares',
         image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop'
       },
       {
-        name: 'Pizzas Especiais',
-        description: 'Pizzas com ingredientes especiais',
+        name: 'Pratos Especiais',
+        description: 'Pratos com ingredientes especiais',
         image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop'
       },
       {
-        name: 'Pizzas Doces',
-        description: 'Pizzas doces para sobremesa',
+        name: 'Sobremesas',
+        description: 'Sobremesas deliciosas',
         image: 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400&h=300&fit=crop'
       },
       {

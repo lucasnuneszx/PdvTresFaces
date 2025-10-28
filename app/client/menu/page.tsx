@@ -285,7 +285,7 @@ export default function MenuPage() {
                 )}
                 <div>
                   <h1 className="text-xl md:text-2xl font-bold text-gray-900">
-                    {settings?.restaurantName || 'Central Das Pizzas'}
+                    {settings?.restaurantName || 'Estabelecimento'}
                   </h1>
                   <div className="flex flex-wrap items-center gap-2 md:gap-4 text-sm text-gray-600">
                     {settings?.deliveryEstimate && (
@@ -591,7 +591,7 @@ export default function MenuPage() {
             {/* Informações centrais */}
             <div className="text-center">
               <p className="text-gray-600 text-sm">
-                &copy; 2024 Central das Pizzas. Todos os direitos reservados.
+                &copy; 2024 Estabelecimento. Todos os direitos reservados.
               </p>
             </div>
             

@@ -5,8 +5,8 @@ import { Providers } from './providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Central Das Pizzas - Sistema PDV',
-  description: 'Sistema de gestão para pizzaria Central Das Pizzas',
+  title: 'Sistema PDV - Demonstração',
+  description: 'Sistema de gestão para estabelecimentos comerciais',
 }
 
 export default function RootLayout({

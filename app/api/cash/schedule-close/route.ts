@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     } else {
       await prisma.systemSettings.create({
         data: {
-          restaurantName: 'Central Das Pizzas',
+          restaurantName: 'Estabelecimento',
           autoCloseTime: time,
           autoCloseEnabled: enabled
         }

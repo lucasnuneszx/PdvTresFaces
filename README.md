@@ -1,6 +1,6 @@
-# Central Das Pizzas - Sistema PDV
+# Sistema PDV - Demonstração
 
-Sistema completo de gestão para pizzaria com interface web responsiva, controle de caixa, integração com iFood e sistema de impressão.
+Sistema completo de gestão para estabelecimentos comerciais com interface web responsiva, controle de caixa, integração com iFood e sistema de impressão.
 
 ## 🚀 Funcionalidades
 
@@ -263,11 +263,11 @@ Para dúvidas ou problemas:
 
 ## 📄 Licença
 
-Este projeto é proprietário da Central Das Pizzas.
+Este projeto é para demonstração de sistema PDV.
 
 ---
 
-**Desenvolvido com ❤️ para Central Das Pizzas**
+**Desenvolvido com ❤️ para demonstração de sistema PDV**
 
 
 

@@ -64,7 +64,7 @@ function generatePrintContent(order: any, printType: string) {
   
   // Cabeçalho
   content += '='.repeat(40) + '\n'
-  content += 'CENTRAL DAS PIZZAS\n'
+  content += 'ESTABELECIMENTO\n'
   content += '='.repeat(40) + '\n'
   content += `Data/Hora: ${dateTime}\n`
   content += `Pedido: #${order.id.slice(-8)}\n`

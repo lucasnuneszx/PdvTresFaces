@@ -45,7 +45,7 @@ export default function Home() {
                   <Pizza className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">Central Das Pizzas</h1>
+                  <h1 className="text-xl font-bold text-gray-900">Estabelecimento</h1>
                   <p className="text-xs text-gray-500">Sistema PDV</p>
                 </div>
               </div>
@@ -199,10 +199,10 @@ export default function Home() {
               <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg flex items-center justify-center mr-3">
                 <Pizza className="h-5 w-5 text-white" />
               </div>
-              <span className="text-lg font-bold text-gray-900">Central Das Pizzas</span>
+              <span className="text-lg font-bold text-gray-900">Estabelecimento</span>
             </div>
             <p className="text-gray-600">
-              &copy; 2024 Central Das Pizzas. Todos os direitos reservados.
+              &copy; 2024 Estabelecimento. Todos os direitos reservados.
             </p>
           </div>
         </div>

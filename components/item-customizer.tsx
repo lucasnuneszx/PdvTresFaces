@@ -206,12 +206,12 @@ export default function ItemCustomizer({ item, onAddToCart, onClose }: ItemCusto
             </div>
           </div>
 
-          {/* Personalização de Pizza */}
+          {/* Personalização de Prato */}
           {item.isPizza && (
             <>
               {/* Seleção de Tamanho */}
               <div>
-                <Label className="text-base font-medium mb-3 block text-gray-900">Tamanho da Pizza</Label>
+                <Label className="text-base font-medium mb-3 block text-gray-900">Tamanho do Prato</Label>
                 <div className="grid grid-cols-2 gap-3">
                   {sizes.map((size) => (
                     <Button
@@ -237,7 +237,7 @@ export default function ItemCustomizer({ item, onAddToCart, onClose }: ItemCusto
               {selectedSize && (
                 <div>
                   <Label className="text-base font-medium mb-3 block text-gray-900">
-                    Sabores da Pizza
+                    Sabores do Prato
                     <span className="text-sm text-gray-500 ml-2">
                       ({selectedFlavors.length}/{selectedSize.maxFlavors})
                     </span>

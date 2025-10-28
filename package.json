@@ -1,11 +1,11 @@
 {
-  "name": "central-das-pizzas-pdv",
+  "name": "sistema-pdv-demonstracao",
   "version": "1.0.0",
-  "description": "Sistema PDV para Central Das Pizzas",
+  "description": "Sistema PDV para Demonstração",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "node scripts/vercel-build.js",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "prisma generate",
@@ -15,6 +15,8 @@
     "postinstall": "prisma generate",
     "railway:build": "prisma generate && next build",
     "railway:start": "npm run db:push && npm start",
+    "vercel:build": "node scripts/vercel-build.js",
+    "vercel:admin": "node scripts/create-admin-vercel.js",
     "deploy": "node scripts/auto-deploy.js",
     "deploy:win": "powershell -ExecutionPolicy Bypass -File deploy.ps1",
     "populate:pizza": "node scripts/populate-pizza-data.js"

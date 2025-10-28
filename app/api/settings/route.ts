@@ -15,7 +15,7 @@ export async function GET() {
 
     // Retornar configurações padrão se não existirem
     const defaultSettings = {
-      restaurantName: 'Central Das Pizzas',
+      restaurantName: 'Estabelecimento',
       restaurantAddress: '',
       restaurantPhone: '',
       restaurantEmail: '',

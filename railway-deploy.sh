@@ -16,7 +16,7 @@ echo "🗄️ Aplicando migrações do banco..."
 npx prisma db push
 
 # Popular dados iniciais se necessário
-echo "🍕 Populando dados de pizza..."
+echo "🍽️ Populando dados de pratos..."
 node scripts/populate-pizza-data.js
 
 # Iniciar aplicação

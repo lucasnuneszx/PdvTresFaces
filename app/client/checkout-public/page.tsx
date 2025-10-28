@@ -778,7 +778,7 @@ function CheckoutPublicContent() {
             {/* Informações centrais */}
             <div className="text-center">
               <p className="text-gray-600 text-sm">
-                &copy; 2024 Central das Pizzas. Todos os direitos reservados.
+                &copy; 2024 Estabelecimento. Todos os direitos reservados.
               </p>
             </div>
             
