@@ -7,32 +7,32 @@ const prisma = new PrismaClient()
 
 async function railwaySetup() {
   try {
-    console.log('🚀 Configurando aplicação para Railway...')
+    console.log('Configurando aplicação para Railway...')
     
     // Detectar se estamos em produção (Railway com PostgreSQL)
     const isProduction = process.env.DATABASE_URL && process.env.DATABASE_URL.includes('postgres')
     
     if (isProduction) {
-      console.log('📦 Ambiente de produção detectado (PostgreSQL)')
+      console.log('Ambiente de produção detectado (PostgreSQL)')
       
       // Aplicar schema ao banco de dados
-      console.log('🔄 Aplicando schema ao banco de dados...')
+      console.log('Aplicando schema ao banco de dados...')
       try {
         const { stdout, stderr } = await execAsync('npx prisma db push --accept-data-loss')
-        console.log('✅ Schema aplicado com sucesso')
+        console.log('Schema aplicado com sucesso')
       } catch (error) {
-        console.error('⚠️ Erro ao aplicar schema:', error.message)
+        console.error('Erro ao aplicar schema:', error.message)
         // Continuar mesmo se houver erro
       }
     } else {
-      console.log('💾 Ambiente de desenvolvimento detectado (SQLite)')
+      console.log('Ambiente de desenvolvimento detectado (SQLite)')
       
       // Para desenvolvimento, também aplicar o schema
       try {
         const { stdout, stderr } = await execAsync('npx prisma db push --accept-data-loss')
-        console.log('✅ Schema aplicado com sucesso')
+        console.log('Schema aplicado com sucesso')
       } catch (error) {
-        console.error('⚠️ Erro ao aplicar schema:', error.message)
+        console.error('Erro ao aplicar schema:', error.message)
       }
     }
 
@@ -44,7 +44,7 @@ async function railwaySetup() {
       const existingSettings = await prisma.systemSettings.findFirst()
       
       if (!existingSettings) {
-        console.log('📝 Criando configurações iniciais...')
+        console.log('Criando configurações iniciais...')
         
         // Criar configurações padrão para Railway
         await prisma.systemSettings.create({
@@ -67,12 +67,12 @@ async function railwaySetup() {
           }
         })
         
-        console.log('✅ Configurações iniciais criadas')
+        console.log('Configurações iniciais criadas')
       } else {
         console.log('ℹ️ Configurações já existem')
       }
     } catch (error) {
-      console.error('⚠️ Erro ao criar configurações:', error.message)
+      console.error('Erro ao criar configurações:', error.message)
       // Continuar mesmo se houver erro
     }
 
@@ -81,29 +81,29 @@ async function railwaySetup() {
       const categoriesCount = await prisma.category.count()
       
       if (categoriesCount === 0) {
-        console.log('🍕 Criando dados do cardápio...')
+        console.log('Criando dados do cardápio...')
         
         try {
           await execAsync('node scripts/populate-menu-data.js')
-          console.log('✅ Dados do cardápio criados')
+          console.log('Dados do cardápio criados')
         } catch (error) {
-          console.log('⚠️ Erro ao popular dados do cardápio:', error.message)
+          console.log('Erro ao popular dados do cardápio:', error.message)
         }
       } else {
         console.log('ℹ️ Dados do cardápio já existem')
       }
     } catch (error) {
-      console.error('⚠️ Erro ao verificar categorias:', error.message)
+      console.error('Erro ao verificar categorias:', error.message)
     }
 
-    console.log('🎉 Setup do Railway concluído!')
-    console.log('📱 Aplicação pronta para uso')
-    console.log('🌐 Acesse a URL do Railway para ver o cardápio')
+    console.log('Setup do Railway concluído!')
+    console.log('Aplicação pronta para uso')
+    console.log('Acesse a URL do Railway para ver o cardápio')
 
   } catch (error) {
-    console.error('❌ Erro no setup do Railway:', error)
+    console.error('Erro no setup do Railway:', error)
     // Não fazer exit(1) para não bloquear o deploy
-    console.log('⚠️ Continuando deploy mesmo com erros...')
+    console.log('Continuando deploy mesmo com erros...')
   } finally {
     await prisma.$disconnect()
   }

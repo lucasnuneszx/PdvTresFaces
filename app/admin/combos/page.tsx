@@ -514,7 +514,7 @@ export default function AdminCombos() {
                           </div>
                         </div>
                         <p className="text-xs text-gray-600 mt-2">
-                          💡 Os tamanhos serão criados automaticamente quando você salvar o combo
+                          Os tamanhos serão criados automaticamente quando você salvar o combo
                         </p>
                       </div>
                     )}

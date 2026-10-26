@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 
 async function createAdminUser() {
   try {
-    console.log('🔧 Criando usuário administrador para Vercel...')
+    console.log('Criando usuário administrador para Vercel...')
 
     // Verificar se já existe um admin
     const existingAdmin = await prisma.user.findFirst({
@@ -13,9 +13,9 @@ async function createAdminUser() {
     })
 
     if (existingAdmin) {
-      console.log('✅ Usuário administrador já existe!')
-      console.log(`📧 Email: ${existingAdmin.email}`)
-      console.log('🔑 Senha: 123456')
+      console.log('Usuário administrador já existe!')
+      console.log(`Email: ${existingAdmin.email}`)
+      console.log('Senha: 123456')
       return
     }
 
@@ -34,8 +34,8 @@ async function createAdminUser() {
       }
     })
 
-    console.log('🎉 Usuário administrador criado com sucesso!')
-    console.log('\n📋 Credenciais de acesso:')
+    console.log('Usuário administrador criado com sucesso!')
+    console.log('\nCredenciais de acesso:')
     console.log('┌─────────────────────────────────────────────────────────┐')
     console.log('│                    ESTABELECIMENTO                       │')
     console.log('├─────────────────────────────────────────────────────────┤')
@@ -43,11 +43,11 @@ async function createAdminUser() {
     console.log('│ Senha: 123456                                          │')
     console.log('│ Função: Administrador                                   │')
     console.log('└─────────────────────────────────────────────────────────┘')
-    console.log('\n🌐 Acesse: https://seu-projeto.vercel.app/admin')
-    console.log('📱 Menu cliente: https://seu-projeto.vercel.app/client/menu')
+    console.log('\nAcesse: https://seu-projeto.vercel.app/admin')
+    console.log('Menu cliente: https://seu-projeto.vercel.app/client/menu')
 
   } catch (error) {
-    console.error('❌ Erro ao criar usuário admin:', error)
+    console.error('Erro ao criar usuário admin:', error)
     process.exit(1)
   } finally {
     await prisma.$disconnect()

@@ -5,10 +5,10 @@ const prisma = new PrismaClient()
 
 async function setupVercel() {
   try {
-    console.log('🚀 Configurando sistema para Vercel...')
+    console.log('Configurando sistema para Vercel...')
 
     // 1. Criar configurações padrão
-    console.log('⚙️ Criando configurações padrão...')
+    console.log('Criando configurações padrão...')
     await prisma.systemSettings.upsert({
       where: { id: 'default' },
       update: {},
@@ -30,7 +30,7 @@ async function setupVercel() {
     })
 
     // 2. Criar usuários administrativos
-    console.log('👥 Criando usuários administrativos...')
+    console.log('Criando usuários administrativos...')
     const hashedPassword = await bcrypt.hash('123456', 12)
 
     const users = [
@@ -73,7 +73,7 @@ async function setupVercel() {
     }
 
     // 3. Criar categorias básicas
-    console.log('📂 Criando categorias básicas...')
+    console.log('Criando categorias básicas...')
     const categories = [
       {
         name: 'Pratos Tradicionais',
@@ -109,8 +109,8 @@ async function setupVercel() {
       })
     }
 
-    console.log('\n🎉 Sistema configurado com sucesso!')
-    console.log('\n📋 Credenciais de acesso:')
+    console.log('\nSistema configurado com sucesso!')
+    console.log('\nCredenciais de acesso:')
     console.log('┌─────────────────────────────────────────────────────────┐')
     console.log('│                    ESTABELECIMENTO                       │')
     console.log('├─────────────────────────────────────────────────────────┤')
@@ -130,13 +130,13 @@ async function setupVercel() {
     console.log('│ Senha: 123456                                          │')
     console.log('│ Função: Cozinha                                         │')
     console.log('└─────────────────────────────────────────────────────────┘')
-    console.log('\n🌐 URLs importantes:')
+    console.log('\nURLs importantes:')
     console.log('• Admin: /admin')
     console.log('• Menu Cliente: /client/menu')
     console.log('• Credenciais: /credentials')
 
   } catch (error) {
-    console.error('❌ Erro ao configurar sistema:', error)
+    console.error('Erro ao configurar sistema:', error)
     process.exit(1)
   } finally {
     await prisma.$disconnect()
