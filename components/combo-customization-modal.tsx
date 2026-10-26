@@ -120,7 +120,6 @@ export default function ComboCustomizationModal({
   const initializeCombo = useCallback(() => {
     const initialItems: { [key: string]: any } = {}
     
-    // Inicializar itens obrigatórios
     combo.requiredItems.forEach(item => {
       initialItems[item.id] = {
         type: item.type,
@@ -162,7 +161,6 @@ export default function ComboCustomizationModal({
         // Remover sabor se já estiver selecionado
         item.flavors.splice(flavorIndex, 1)
       } else {
-        // Adicionar sabor se não estiver selecionado
         item.flavors.push(flavorId)
       }
       

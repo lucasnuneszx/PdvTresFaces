@@ -25,26 +25,22 @@ export function ImageUpload({ onImageSelect, currentImage, className = '' }: Ima
     if (files && files[0]) {
       const file = files[0]
       
-      // Validar tipo de arquivo
       if (!file.type.startsWith('image/')) {
         alert('Por favor, selecione apenas arquivos de imagem.')
         return
       }
 
-      // Validar tamanho (máximo 5MB)
       if (file.size > 5 * 1024 * 1024) {
         alert('A imagem deve ter no máximo 5MB.')
         return
       }
 
-      // Criar preview
       const reader = new FileReader()
       reader.onload = (e) => {
         setPreview(e.target?.result as string)
       }
       reader.readAsDataURL(file)
 
-      // Chamar callback
       onImageSelect(file)
     }
   }

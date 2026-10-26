@@ -14,7 +14,6 @@ export async function POST(request: NextRequest) {
 
     const { time, enabled } = await request.json()
 
-    // Salvar configuração de fechamento automático
     const settings = await prisma.systemSettings.findFirst()
     
     if (settings) {

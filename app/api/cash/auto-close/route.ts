@@ -15,14 +15,12 @@ export async function POST(request: NextRequest) {
     const { date } = await request.json()
     const targetDate = date ? new Date(date) : new Date()
     
-    // Definir início e fim do dia
     const startOfDay = new Date(targetDate)
     startOfDay.setHours(0, 0, 0, 0)
     
     const endOfDay = new Date(targetDate)
     endOfDay.setHours(23, 59, 59, 999)
 
-    // Verificar se já existe fechamento para este dia
     const existingClose = await prisma.cashLog.findFirst({
       where: {
         type: 'CLOSE',
@@ -40,7 +38,6 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    // Buscar todas as vendas do dia
     const dailySales = await prisma.cashLog.findMany({
       where: {
         type: 'ORDER',
@@ -63,11 +60,9 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    // Calcular totais
     const totalSales = dailySales.reduce((sum, sale) => sum + sale.amount, 0)
     const totalOrders = dailySales.length
 
-    // Buscar abertura do caixa
     const cashOpen = await prisma.cashLog.findFirst({
       where: {
         type: 'OPEN',
@@ -80,10 +75,8 @@ export async function POST(request: NextRequest) {
 
     const openingAmount = cashOpen?.amount || 0
 
-    // Calcular rendimento
     const revenue = totalSales - openingAmount
 
-    // Criar fechamento do caixa
     const cashClose = await prisma.cashLog.create({
       data: {
         type: 'CLOSE',
@@ -92,7 +85,6 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    // Gerar relatório detalhado
     const report = {
       date: targetDate.toISOString().split('T')[0],
       openingAmount,

@@ -48,7 +48,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: 'Dados obrigatórios não fornecidos' }, { status: 400 })
     }
 
-    // Verificar se email já existe
     const existingUser = await prisma.user.findUnique({
       where: { email }
     })
@@ -57,7 +56,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: 'Email já cadastrado' }, { status: 400 })
     }
 
-    // Hash da senha
     const hashedPassword = await bcrypt.hash(password, 12)
 
     const user = await prisma.user.create({

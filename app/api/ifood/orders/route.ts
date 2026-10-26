@@ -18,7 +18,6 @@ export async function GET() {
       )
     }
 
-    // Verificar se o usuário tem permissão para acessar integrações
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -27,7 +26,6 @@ export async function GET() {
       )
     }
 
-    // Buscar pedidos do iFood
     const ifoodOrders = await prisma.order.findMany({
       where: {
         paymentMethod: 'IFOOD',
@@ -69,7 +67,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se o usuário tem permissão para acessar integrações
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -81,13 +78,11 @@ export async function POST(request: NextRequest) {
     const { action, orderId, status } = await request.json()
 
     if (action === 'sync') {
-      // Sincronizar pedidos do iFood
       await syncIfoodOrders()
       return NextResponse.json({ message: 'Sincronização iniciada' })
     }
 
     if (action === 'update_status') {
-      // Atualizar status do pedido no iFood
       await updateIfoodOrderStatus(orderId, status)
       return NextResponse.json({ message: 'Status atualizado' })
     }
@@ -142,7 +137,6 @@ async function syncIfoodOrders() {
     ]
 
     for (const ifoodOrder of mockIfoodOrders) {
-      // Verificar se o pedido já existe
       const existingOrder = await prisma.order.findFirst({
         where: {
           ifoodOrderId: ifoodOrder.id
@@ -150,7 +144,6 @@ async function syncIfoodOrders() {
       })
 
       if (!existingOrder) {
-        // Criar pedido do iFood
         const order = await prisma.order.create({
           data: {
             userId: 'system', // Usuário sistema para pedidos do iFood
@@ -163,7 +156,6 @@ async function syncIfoodOrders() {
           }
         })
 
-        // Criar itens do pedido
         await prisma.orderItem.createMany({
           data: ifoodOrder.items.map((item: any) => ({
             orderId: order.id,
@@ -173,7 +165,6 @@ async function syncIfoodOrders() {
           }))
         })
 
-        // Registrar venda no caixa
         await prisma.cashLog.create({
           data: {
             orderId: order.id,
@@ -191,7 +182,6 @@ async function syncIfoodOrders() {
 
 async function updateIfoodOrderStatus(orderId: string, status: string) {
   try {
-    // Atualizar status no banco local
     await prisma.order.update({
       where: { id: orderId },
       data: { status: status as any }

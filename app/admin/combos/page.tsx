@@ -238,8 +238,6 @@ export default function AdminCombos() {
   }
 
   const handleAddToCart = (customizedCombo: any) => {
-    // Aqui você pode implementar a lógica para adicionar ao carrinho
-    console.log('Combo personalizado adicionado:', customizedCombo)
     toast.success('Combo personalizado adicionado ao carrinho!')
   }
 
@@ -439,13 +437,10 @@ export default function AdminCombos() {
                           currentImage={formData.image}
                           onImageSelect={(file) => {
                             if (file.size === 0) {
-                              // Remover imagem
                               setFormData({ ...formData, image: '' })
                               setSelectedImage(null)
                             } else {
-                              // Nova imagem selecionada
                               setSelectedImage(file)
-                              // Criar preview imediato
                               const reader = new FileReader()
                               reader.onload = (e) => {
                                 const url = e.target?.result as string

@@ -14,7 +14,6 @@ export async function GET() {
       )
     }
 
-    // Verificar se o usuário tem permissão para acessar histórico
     const allowedRoles = ['ADMIN', 'MANAGER', 'CASHIER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -23,7 +22,6 @@ export async function GET() {
       )
     }
 
-    // Buscar todos os pedidos com informações completas
     const orders = await prisma.order.findMany({
       include: {
         user: {

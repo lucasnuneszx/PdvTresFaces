@@ -34,20 +34,17 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    // Buscar categoria de Combos para mover os combos
     const combosCategory = await prisma.category.findFirst({
       where: { name: 'Combos' }
     })
 
     if (combosCategory) {
-      // Mover todos os combos desta categoria para "Combos"
       await prisma.combo.updateMany({
         where: { categoryId: params.id },
         data: { categoryId: combosCategory.id }
       })
     }
 
-    // Excluir a categoria
     await prisma.category.delete({
       where: { id: params.id }
     })

@@ -14,7 +14,6 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    // Buscar dados completos do usuário
     const user = await prisma.user.findUnique({
       where: { email: session.user.email || '' },
       select: {

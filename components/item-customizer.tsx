@@ -71,10 +71,8 @@ export default function ItemCustomizer({ item, onAddToCart, onClose }: ItemCusto
 
   const handleFlavorToggle = (flavor: PizzaFlavor) => {
     if (selectedFlavors.find(f => f.id === flavor.id)) {
-      // Remover sabor
       setSelectedFlavors(selectedFlavors.filter(f => f.id !== flavor.id))
     } else {
-      // Adicionar sabor (se não exceder o limite)
       if (selectedSize && selectedFlavors.length < selectedSize.maxFlavors) {
         setSelectedFlavors([...selectedFlavors, flavor])
       }
@@ -97,7 +95,6 @@ export default function ItemCustomizer({ item, onAddToCart, onClose }: ItemCusto
       // R$ 20,00 por sabor especial
       total += especialCount * 20.00
 
-      // Borda recheada
       if (stuffedCrust) {
         total += 4.99
       }

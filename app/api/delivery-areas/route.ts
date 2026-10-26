@@ -39,7 +39,6 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { name, city, state, zipCode, deliveryFee } = body
 
-    // Validar dados obrigatórios
     if (!name || !city || !state || deliveryFee === undefined) {
       return NextResponse.json(
         { message: 'Nome, cidade, estado e taxa de entrega são obrigatórios' },
@@ -47,7 +46,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se já existe uma área com o mesmo nome na mesma cidade
     const existingArea = await prisma.deliveryArea.findUnique({
       where: {
         name_city_state: {

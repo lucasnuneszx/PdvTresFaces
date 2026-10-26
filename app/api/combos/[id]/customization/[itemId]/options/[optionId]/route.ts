@@ -17,7 +17,6 @@ export async function PUT(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar combos
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -29,7 +28,6 @@ export async function PUT(
     const { optionId } = params
     const { name, description, price, image, order } = await request.json()
 
-    // Validar campos obrigatórios
     if (!name) {
       return NextResponse.json(
         { message: 'Nome da opção é obrigatório' },
@@ -37,7 +35,6 @@ export async function PUT(
       )
     }
 
-    // Atualizar opção
     const updatedOption = await prisma.comboCustomizationOption.update({
       where: { id: optionId },
       data: {
@@ -73,7 +70,6 @@ export async function DELETE(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar combos
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -84,7 +80,6 @@ export async function DELETE(
 
     const { optionId } = params
 
-    // Excluir opção
     await prisma.comboCustomizationOption.delete({
       where: { id: optionId }
     })

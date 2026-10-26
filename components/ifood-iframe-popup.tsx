@@ -103,7 +103,6 @@ export function IfoodIframePopup({
     setSelectedUrl(link.url)
     setIsLoading(true)
     
-    // Simular carregamento
     setTimeout(() => {
       setIsLoading(false)
     }, 1500)

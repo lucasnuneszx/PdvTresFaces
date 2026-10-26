@@ -17,7 +17,6 @@ export async function PUT(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar pedidos
     const allowedRoles = ['ADMIN', 'MANAGER', 'CASHIER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -29,7 +28,6 @@ export async function PUT(
     const orderId = params.id
     const { deliveryPerson, status } = await request.json()
 
-    // Atualizar o pedido
     const updateData: any = {}
     
     if (deliveryPerson !== undefined) {
@@ -70,7 +68,6 @@ export async function PUT(
       }
     })
 
-    // Registrar no log do caixa
     if (status === 'DELIVERED') {
       await prisma.cashLog.create({
         data: {

@@ -19,7 +19,6 @@ export async function PUT(
 
     const notificationId = params.id
 
-    // Marcar notificação como lida
     const notification = await prisma.notification.update({
       where: {
         id: notificationId,

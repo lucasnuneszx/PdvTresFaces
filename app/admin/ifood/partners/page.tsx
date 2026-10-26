@@ -95,7 +95,6 @@ export default function IfoodPartners() {
     setShowPopup(true)
     setIsLoading(true)
     
-    // Simular carregamento
     setTimeout(() => {
       setIsLoading(false)
     }, 1000)

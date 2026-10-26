@@ -14,7 +14,6 @@ export async function GET() {
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar sabores
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -50,7 +49,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar sabores
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -61,7 +59,6 @@ export async function POST(request: NextRequest) {
 
     const { name, description, type } = await request.json()
 
-    // Validar campos obrigatórios
     if (!name || !type) {
       return NextResponse.json(
         { message: 'Nome e tipo são obrigatórios' },
@@ -69,7 +66,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se já existe sabor com o mesmo nome
     const existingFlavor = await prisma.pizzaFlavor.findFirst({
       where: { name }
     })
@@ -81,7 +77,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Criar sabor
     const flavor = await prisma.pizzaFlavor.create({
       data: {
         name,

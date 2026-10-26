@@ -14,7 +14,6 @@ export async function GET() {
       )
     }
 
-    // Verificar se o usuário tem permissão para acessar motoboys
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -23,7 +22,6 @@ export async function GET() {
       )
     }
 
-    // Buscar todos os motoboys
     const deliveryPersons = await prisma.deliveryPerson.findMany({
       orderBy: {
         createdAt: 'desc'
@@ -51,7 +49,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar motoboys
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -62,7 +59,6 @@ export async function POST(request: NextRequest) {
 
     const { name, phone, plate, status, isActive } = await request.json()
 
-    // Validar campos obrigatórios
     if (!name || !phone) {
       return NextResponse.json(
         { message: 'Nome e telefone são obrigatórios' },
@@ -70,7 +66,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se já existe um motoboy com o mesmo telefone
     const existingPerson = await prisma.deliveryPerson.findFirst({
       where: { phone }
     })
@@ -82,7 +77,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Criar motoboy
     const deliveryPerson = await prisma.deliveryPerson.create({
       data: {
         name,

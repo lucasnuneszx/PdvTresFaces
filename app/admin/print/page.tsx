@@ -90,7 +90,6 @@ export default function PrintSettingsPage() {
     
     let content = ''
     
-    // Header
     content += '='.repeat(settings.paperWidth) + '\n'
     if (settings.showLogo) {
       content += settings.restaurantName + '\n'
@@ -200,8 +199,8 @@ export default function PrintSettingsPage() {
   const handleSaveSettings = async () => {
     setIsLoading(true)
     try {
-      // Aqui você salvaria as configurações no banco de dados
-      await new Promise(resolve => setTimeout(resolve, 1000)) // Simulação
+      // As configurações de impressão ainda não são persistidas
+      await new Promise(resolve => setTimeout(resolve, 1000))
       toast.success('Configurações salvas com sucesso!')
     } catch (error) {
       toast.error('Erro ao salvar configurações')

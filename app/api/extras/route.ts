@@ -14,7 +14,6 @@ export async function GET() {
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar extras
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -50,7 +49,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar extras
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -61,7 +59,6 @@ export async function POST(request: NextRequest) {
 
     const { name, description, price, category, size } = await request.json()
 
-    // Validar campos obrigatórios
     if (!name || !category || !price) {
       return NextResponse.json(
         { message: 'Nome, categoria e preço são obrigatórios' },
@@ -76,7 +73,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se já existe item com o mesmo nome
     const existingExtra = await prisma.extraItem.findFirst({
       where: { name }
     })
@@ -88,7 +84,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Criar item extra
     const extra = await prisma.extraItem.create({
       data: {
         name,

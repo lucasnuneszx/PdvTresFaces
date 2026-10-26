@@ -6,14 +6,12 @@ import { UserRole } from '@/lib/constants'
 
 export async function GET() {
   try {
-    // Buscar configurações do banco ou retornar padrões
     const settings = await prisma.systemSettings.findFirst()
     
     if (settings) {
       return NextResponse.json(settings)
     }
 
-    // Retornar configurações padrão se não existirem
     const defaultSettings = {
       restaurantName: 'Estabelecimento',
       restaurantAddress: '',
@@ -50,37 +48,19 @@ export async function PUT(request: NextRequest) {
     }
 
     const settingsData = await request.json()
-    
-    // Log para debug
-    console.log('Salvando configurações:', {
-      restaurantName: settingsData.restaurantName,
-      hasLogo: !!settingsData.restaurantLogo,
-      hasBanner: !!settingsData.restaurantBanner,
-      logoLength: settingsData.restaurantLogo?.length || 0,
-      bannerLength: settingsData.restaurantBanner?.length || 0,
-      isOpen: settingsData.isOpen,
-      deliveryEstimate: settingsData.deliveryEstimate
-    })
 
-    // Verificar se já existem configurações
     const existingSettings = await prisma.systemSettings.findFirst()
 
     if (existingSettings) {
-      // Atualizar configurações existentes
       const updatedSettings = await prisma.systemSettings.update({
         where: { id: existingSettings.id },
         data: settingsData
       })
-      
-      console.log('Configurações atualizadas com sucesso')
       return NextResponse.json(updatedSettings)
     } else {
-      // Criar novas configurações
       const newSettings = await prisma.systemSettings.create({
         data: settingsData
       })
-      
-      console.log('Configurações criadas com sucesso')
       return NextResponse.json(newSettings)
     }
   } catch (error) {

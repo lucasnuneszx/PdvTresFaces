@@ -14,7 +14,6 @@ export async function GET() {
       )
     }
 
-    // Buscar notificações não lidas primeiro, depois as lidas
     const notifications = await prisma.notification.findMany({
       where: {
         userId: session.user.id
@@ -49,7 +48,6 @@ export async function POST(request: NextRequest) {
 
     const { type, source, title, message, orderId, logo } = await request.json()
 
-    // Criar notificação
     const notification = await prisma.notification.create({
       data: {
         userId: session.user.id,

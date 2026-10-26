@@ -16,7 +16,6 @@ export async function POST(request: NextRequest) {
 
     const { orderId, printType } = await request.json()
 
-    // Buscar o pedido
     const order = await prisma.order.findUnique({
       where: { id: orderId },
       include: {
@@ -37,7 +36,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Gerar conteúdo para impressão
     const printContent = generatePrintContent(order, printType)
 
     // Em produção, enviar para a impressora
@@ -62,7 +60,6 @@ function generatePrintContent(order: any, printType: string) {
   
   let content = ''
   
-  // Cabeçalho
   content += '='.repeat(40) + '\n'
   content += 'ESTABELECIMENTO\n'
   content += '='.repeat(40) + '\n'
@@ -73,7 +70,6 @@ function generatePrintContent(order: any, printType: string) {
   content += '-'.repeat(40) + '\n'
 
   if (printType === 'kitchen') {
-    // Impressão para cozinha
     content += 'PEDIDO PARA COZINHA\n'
     content += '-'.repeat(40) + '\n'
     
@@ -105,7 +101,6 @@ function generatePrintContent(order: any, printType: string) {
     }
     
   } else if (printType === 'receipt') {
-    // Impressão de cupom fiscal
     content += 'CUPOM FISCAL\n'
     content += '-'.repeat(40) + '\n'
     

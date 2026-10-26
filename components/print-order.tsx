@@ -30,13 +30,7 @@ export function PrintOrder({ orderId, orderNumber }: PrintOrderProps) {
       })
 
       if (response.ok) {
-        const data = await response.json()
         toast.success(`${printType === 'kitchen' ? 'Impressão para cozinha' : 'Cupom fiscal'} enviada!`)
-        
-        // Opcional: mostrar preview do conteúdo
-        if (data.content) {
-          console.log('Conteúdo para impressão:', data.content)
-        }
       } else {
         toast.error('Erro ao imprimir')
       }
@@ -63,7 +57,6 @@ export function PrintOrder({ orderId, orderNumber }: PrintOrderProps) {
       if (response.ok) {
         const data = await response.json()
         
-        // Criar e baixar arquivo de texto
         const blob = new Blob([data.content], { type: 'text/plain' })
         const url = window.URL.createObjectURL(blob)
         const a = document.createElement('a')

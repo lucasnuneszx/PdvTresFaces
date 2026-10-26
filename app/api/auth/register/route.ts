@@ -5,7 +5,6 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, password, phone, cpf } = await request.json()
 
-    // Verificar se o email já existe
     const existingUser = await prisma.user.findUnique({
       where: { email }
     })
@@ -31,7 +30,6 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Criar usuário
     const user = await prisma.user.create({
       data: {
         name,
@@ -43,7 +41,6 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    // Remover a senha da resposta
     const { password: _, ...userWithoutPassword } = user
 
     return NextResponse.json(

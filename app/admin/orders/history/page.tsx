@@ -90,7 +90,6 @@ export default function OrdersHistory() {
   const filterOrders = useCallback(() => {
     let filtered = [...orders]
 
-    // Filtro por termo de busca
     if (searchTerm) {
       filtered = filtered.filter(order => 
         order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -100,12 +99,10 @@ export default function OrdersHistory() {
       )
     }
 
-    // Filtro por status
     if (statusFilter !== 'ALL') {
       filtered = filtered.filter(order => order.status === statusFilter)
     }
 
-    // Filtro por data
     if (dateFilter !== 'ALL') {
       const now = new Date()
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())

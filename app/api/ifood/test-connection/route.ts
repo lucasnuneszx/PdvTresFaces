@@ -13,7 +13,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se o usuário tem permissão para acessar configurações
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -32,7 +31,6 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      // Testar conexão com a API do iFood
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), 10000) // 10 segundos de timeout
       

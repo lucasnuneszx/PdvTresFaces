@@ -9,7 +9,6 @@ export function errorHandler(error: any, request: NextRequest) {
     timestamp: new Date().toISOString()
   })
 
-  // Retornar resposta de erro padronizada
   return NextResponse.json(
     { 
       message: 'Erro interno do servidor',
@@ -42,7 +41,6 @@ export function validateOrderData(data: any) {
     errors.push('Endereço obrigatório para entrega')
   }
 
-  // Validar itens
   if (data.items && Array.isArray(data.items)) {
     data.items.forEach((item: any, index: number) => {
       if (!item.comboId) {

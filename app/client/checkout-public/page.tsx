@@ -210,7 +210,6 @@ function CheckoutPublicContent() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Validar se há itens no carrinho
     if (cart.length === 0) {
       toast.error('Carrinho vazio')
       setIsLoading(false)
@@ -235,7 +234,6 @@ function CheckoutPublicContent() {
       }
     }
 
-    // Validar dados do cliente
     if (!formData.customerName || !formData.customerPhone) {
       toast.error('Preencha nome e telefone')
       setIsLoading(false)
@@ -263,8 +261,6 @@ function CheckoutPublicContent() {
         address: !session?.user && formData.deliveryType === DeliveryType.DELIVERY ? formData.address : null
       }
 
-      console.log('Dados do pedido sendo enviados:', orderData)
-
       const response = await fetch('/api/orders', {
         method: 'POST',
         headers: {
@@ -274,8 +270,6 @@ function CheckoutPublicContent() {
       })
 
       if (response.ok) {
-        const result = await response.json()
-        console.log('Pedido criado com sucesso:', result)
         toast.success('Pedido realizado com sucesso!')
         localStorage.removeItem('cart')
         router.push('/client/menu')

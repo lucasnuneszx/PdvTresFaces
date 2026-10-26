@@ -17,7 +17,6 @@ export async function GET(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar combos
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -72,7 +71,6 @@ export async function POST(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar combos
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -94,7 +92,6 @@ export async function POST(
       image 
     } = await request.json()
 
-    // Validar campos obrigatórios
     if (!name || !type) {
       return NextResponse.json(
         { message: 'Nome e tipo são obrigatórios' },
@@ -102,7 +99,6 @@ export async function POST(
       )
     }
 
-    // Verificar se já existe item com o mesmo nome para este combo
     const existingItem = await prisma.comboCustomizationItem.findFirst({
       where: { 
         comboId,
@@ -117,7 +113,6 @@ export async function POST(
       )
     }
 
-    // Criar item de personalização
     const customizationItem = await prisma.comboCustomizationItem.create({
       data: {
         comboId,

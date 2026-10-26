@@ -256,13 +256,10 @@ export default function AdminCategories() {
                         currentImage={formData.image}
                         onImageSelect={(file) => {
                           if (file.size === 0) {
-                            // Remover imagem
                             setFormData({ ...formData, image: '' })
                             setSelectedImage(null)
                           } else {
-                            // Nova imagem selecionada
                             setSelectedImage(file)
-                            // Criar preview imediato
                             const reader = new FileReader()
                             reader.onload = (e) => {
                               const url = e.target?.result as string

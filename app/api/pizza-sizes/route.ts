@@ -62,7 +62,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se o combo existe
     const combo = await prisma.combo.findUnique({
       where: { id: comboId }
     })
@@ -79,7 +78,6 @@ export async function POST(request: NextRequest) {
       where: { comboId }
     })
 
-    // Criar novos tamanhos
     const createdSizes = await prisma.pizzaSize.createMany({
       data: sizes.map((size: any) => ({
         comboId,

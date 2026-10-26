@@ -17,7 +17,6 @@ export async function PUT(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar motoboys
     const allowedRoles = ['ADMIN', 'MANAGER', 'CASHIER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -29,7 +28,6 @@ export async function PUT(
     const personId = params.id
     const { status } = await request.json()
 
-    // Validar status
     const validStatuses = ['OFFLINE', 'ONLINE', 'DELIVERING', 'UNAVAILABLE', 'OUT_OF_ROTE']
     if (!validStatuses.includes(status)) {
       return NextResponse.json(
@@ -38,7 +36,6 @@ export async function PUT(
       )
     }
 
-    // Atualizar status do motoboy
     const updatedPerson = await prisma.deliveryPerson.update({
       where: { id: personId },
       data: { status }

@@ -17,7 +17,6 @@ export async function PUT(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar sabores
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -29,7 +28,6 @@ export async function PUT(
     const flavorId = params.id
     const { name, description, type, isActive } = await request.json()
 
-    // Validar campos obrigatórios
     if (!name || !type) {
       return NextResponse.json(
         { message: 'Nome e tipo são obrigatórios' },
@@ -37,7 +35,6 @@ export async function PUT(
       )
     }
 
-    // Verificar se já existe outro sabor com o mesmo nome
     const existingFlavor = await prisma.pizzaFlavor.findFirst({
       where: { 
         name,
@@ -52,7 +49,6 @@ export async function PUT(
       )
     }
 
-    // Atualizar sabor
     const updatedFlavor = await prisma.pizzaFlavor.update({
       where: { id: flavorId },
       data: {
@@ -87,7 +83,6 @@ export async function DELETE(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar sabores
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -98,7 +93,6 @@ export async function DELETE(
 
     const flavorId = params.id
 
-    // Verificar se o sabor está sendo usado em algum pedido
     const ordersWithFlavor = await prisma.orderItem.findFirst({
       where: { 
         selectedFlavors: { contains: flavorId }
@@ -112,7 +106,6 @@ export async function DELETE(
       )
     }
 
-    // Excluir sabor
     await prisma.pizzaFlavor.delete({
       where: { id: flavorId }
     })

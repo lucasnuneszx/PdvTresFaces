@@ -14,7 +14,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verificar se o usuário tem permissão para fechar o caixa
     const allowedRoles = ['ADMIN', 'MANAGER', 'CASHIER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -25,7 +24,6 @@ export async function POST(request: NextRequest) {
 
     const { amount, description } = await request.json()
 
-    // Verificar se o caixa está aberto
     const lastCashLog = await prisma.cashLog.findFirst({
       where: {
         type: {
@@ -44,7 +42,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Criar log de fechamento
     const cashLog = await prisma.cashLog.create({
       data: {
         type: 'CLOSE',

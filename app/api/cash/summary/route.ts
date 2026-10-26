@@ -14,7 +14,6 @@ export async function GET() {
       )
     }
 
-    // Verificar se o usuário tem permissão para acessar o caixa
     const allowedRoles = ['ADMIN', 'MANAGER', 'CASHIER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -23,7 +22,6 @@ export async function GET() {
       )
     }
 
-    // Buscar o último log de abertura/fechamento
     const lastCashLog = await prisma.cashLog.findFirst({
       where: {
         type: {
@@ -53,7 +51,6 @@ export async function GET() {
     if (isOpen && lastCashLog) {
       summary.openTime = lastCashLog.createdAt.toISOString()
 
-      // Buscar vendas desde a última abertura
       const orders = await prisma.order.findMany({
         where: {
           createdAt: {
@@ -71,7 +68,6 @@ export async function GET() {
       summary.totalOrders = orders.length
       summary.totalSales = orders.reduce((total, order) => total + Number(order.total), 0)
 
-      // Calcular vendas por método de pagamento
       orders.forEach(order => {
         switch (order.paymentMethod) {
           case 'CASH':

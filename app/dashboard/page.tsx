@@ -46,7 +46,6 @@ export default function Dashboard() {
   const [showNotifications, setShowNotifications] = useState(false)
 
   const handleSignOut = () => {
-    // Implementar logout
     router.push('/auth/signin')
   }
 

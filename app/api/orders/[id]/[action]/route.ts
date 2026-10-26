@@ -17,7 +17,6 @@ export async function POST(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar pedidos
     const allowedRoles = ['ADMIN', 'MANAGER', 'CASHIER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -29,7 +28,6 @@ export async function POST(
     const orderId = params.id
     const action = params.action
 
-    // Buscar o pedido
     const order = await prisma.order.findUnique({
       where: { id: orderId },
       include: {
@@ -77,7 +75,6 @@ export async function POST(
 
 async function acceptOrder(order: any, userId: string) {
   try {
-    // Atualizar status do pedido
     const updatedOrder = await prisma.order.update({
       where: { id: order.id },
       data: {
@@ -87,7 +84,6 @@ async function acceptOrder(order: any, userId: string) {
       }
     })
 
-    // Criar notificação para o cliente
     await prisma.notification.create({
       data: {
         userId: order.userId,
@@ -99,7 +95,6 @@ async function acceptOrder(order: any, userId: string) {
       }
     })
 
-    // Registrar no log do caixa
     await prisma.cashLog.create({
       data: {
         orderId: order.id,
@@ -109,7 +104,6 @@ async function acceptOrder(order: any, userId: string) {
       }
     })
 
-    // IMPRESSÃO AUTOMÁTICA ao aceitar
     await prisma.cashLog.create({
       data: {
         orderId: order.id,
@@ -131,7 +125,6 @@ async function acceptOrder(order: any, userId: string) {
 
 async function rejectOrder(order: any, userId: string) {
   try {
-    // Atualizar status do pedido
     const updatedOrder = await prisma.order.update({
       where: { id: order.id },
       data: {
@@ -141,7 +134,6 @@ async function rejectOrder(order: any, userId: string) {
       }
     })
 
-    // Criar notificação para o cliente
     await prisma.notification.create({
       data: {
         userId: order.userId,
@@ -153,7 +145,6 @@ async function rejectOrder(order: any, userId: string) {
       }
     })
 
-    // Registrar no log do caixa
     await prisma.cashLog.create({
       data: {
         orderId: order.id,
@@ -175,7 +166,6 @@ async function rejectOrder(order: any, userId: string) {
 
 async function printOrder(order: any, userId: string) {
   try {
-    // Registrar impressão no log
     await prisma.cashLog.create({
       data: {
         orderId: order.id,
@@ -185,9 +175,6 @@ async function printOrder(order: any, userId: string) {
       }
     })
 
-    // Aqui você pode integrar com o sistema de impressão
-    // Por exemplo, enviar para uma fila de impressão ou chamar uma API de impressão
-    
     return NextResponse.json({
       message: 'Pedido enviado para impressão',
       orderId: order.id,

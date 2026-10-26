@@ -12,7 +12,6 @@ export async function GET() {
       return NextResponse.json({ message: 'Acesso negado' }, { status: 403 })
     }
 
-    // Estatísticas gerais
     const totalOrders = await prisma.order.count({
       where: {
         ifoodOrderId: { not: null }
@@ -31,7 +30,6 @@ export async function GET() {
 
     const averageOrderValue = totalOrders > 0 ? (totalRevenue._sum.total || 0) / totalOrders : 0
 
-    // Pedidos pendentes
     const pendingOrders = await prisma.order.count({
       where: {
         ifoodOrderId: { not: null },
@@ -39,7 +37,6 @@ export async function GET() {
       }
     })
 
-    // Pedidos completados
     const completedOrders = await prisma.order.count({
       where: {
         ifoodOrderId: { not: null },
@@ -47,7 +44,6 @@ export async function GET() {
       }
     })
 
-    // Estatísticas de hoje
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     const tomorrow = new Date(today)

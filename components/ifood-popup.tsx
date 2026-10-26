@@ -93,7 +93,6 @@ export function IfoodPopup({ isOpen, onClose, title = "iFood Parceiros", descrip
     setSelectedLink(link)
     setIsLoading(true)
     
-    // Simular carregamento
     setTimeout(() => {
       setIsLoading(false)
       window.open(link.url, '_blank', 'noopener,noreferrer')

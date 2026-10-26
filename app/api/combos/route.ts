@@ -26,7 +26,6 @@ export async function POST(request: NextRequest) {
   try {
     const { name, description, price, categoryId, image, isActive, isPizza } = await request.json()
 
-    // Verificar se a categoria existe
     const category = await prisma.category.findUnique({
       where: { id: categoryId }
     })

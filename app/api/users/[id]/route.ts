@@ -22,7 +22,6 @@ export async function PUT(
       return NextResponse.json({ message: 'Dados obrigatórios não fornecidos' }, { status: 400 })
     }
 
-    // Verificar se usuário existe
     const existingUser = await prisma.user.findUnique({
       where: { id: params.id }
     })
@@ -31,7 +30,6 @@ export async function PUT(
       return NextResponse.json({ message: 'Usuário não encontrado' }, { status: 404 })
     }
 
-    // Verificar se email já existe em outro usuário
     const emailExists = await prisma.user.findFirst({
       where: {
         email,
@@ -50,7 +48,6 @@ export async function PUT(
       isActive: isActive ?? true
     }
 
-    // Atualizar senha apenas se fornecida
     if (password && password.trim() !== '') {
       updateData.password = await bcrypt.hash(password, 12)
     }
@@ -86,7 +83,6 @@ export async function DELETE(
       return NextResponse.json({ message: 'Acesso negado' }, { status: 403 })
     }
 
-    // Verificar se usuário existe
     const existingUser = await prisma.user.findUnique({
       where: { id: params.id }
     })

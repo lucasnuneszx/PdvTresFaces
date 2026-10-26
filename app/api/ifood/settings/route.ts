@@ -14,7 +14,6 @@ export async function GET() {
       )
     }
 
-    // Verificar se o usuário tem permissão para acessar configurações
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -23,14 +22,12 @@ export async function GET() {
       )
     }
 
-    // Buscar configurações do iFood
     const settings = await prisma.ifoodSettings.findFirst({
       where: {
         userId: session.user.id
       }
     })
 
-    // Retornar configurações padrão se não existir
     const defaultSettings = {
       apiUrl: process.env.IFOOD_API_URL || '',
       apiKey: '',
@@ -63,7 +60,6 @@ export async function PUT(request: NextRequest) {
       )
     }
 
-    // Verificar se o usuário tem permissão para acessar configurações
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -74,7 +70,6 @@ export async function PUT(request: NextRequest) {
 
     const settingsData = await request.json()
 
-    // Upsert configurações do iFood
     const settings = await prisma.ifoodSettings.upsert({
       where: {
         userId: session.user.id

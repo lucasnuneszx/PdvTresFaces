@@ -16,7 +16,6 @@ export async function GET(request: NextRequest) {
     const startDate = searchParams.get('start') || new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()
     const endDate = searchParams.get('end') || new Date().toISOString()
 
-    // Vendas totais
     const totalSales = await prisma.order.aggregate({
       where: {
         status: 'DELIVERED',
@@ -30,7 +29,6 @@ export async function GET(request: NextRequest) {
       }
     })
 
-    // Total de pedidos
     const totalOrders = await prisma.order.count({
       where: {
         status: 'DELIVERED',
@@ -41,7 +39,6 @@ export async function GET(request: NextRequest) {
       }
     })
 
-    // Total de clientes únicos
     const totalCustomers = await prisma.user.count({
       where: {
         role: 'CLIENT',
@@ -52,10 +49,8 @@ export async function GET(request: NextRequest) {
       }
     })
 
-    // Ticket médio
     const averageOrderValue = totalOrders > 0 ? (totalSales._sum.total || 0) / totalOrders : 0
 
-    // Vendas por dia
     const salesByDay = await prisma.order.groupBy({
       by: ['createdAt'],
       where: {
@@ -76,7 +71,6 @@ export async function GET(request: NextRequest) {
       }
     })
 
-    // Top combos
     const topCombos = await prisma.orderItem.groupBy({
       by: ['comboId'],
       where: {
@@ -103,7 +97,6 @@ export async function GET(request: NextRequest) {
       take: 5
     })
 
-    // Buscar nomes dos combos
     const comboIds = topCombos.map(item => item.comboId)
     const combos = await prisma.combo.findMany({
       where: {
@@ -125,7 +118,6 @@ export async function GET(request: NextRequest) {
       }
     })
 
-    // Vendas por método de pagamento
     const salesByPaymentMethod = await prisma.order.groupBy({
       by: ['paymentMethod'],
       where: {

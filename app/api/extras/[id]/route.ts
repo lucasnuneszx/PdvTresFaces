@@ -17,7 +17,6 @@ export async function PUT(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar extras
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -29,7 +28,6 @@ export async function PUT(
     const extraId = params.id
     const { name, description, price, category, size, isActive } = await request.json()
 
-    // Validar campos obrigatórios
     if (!name || !category || !price) {
       return NextResponse.json(
         { message: 'Nome, categoria e preço são obrigatórios' },
@@ -44,7 +42,6 @@ export async function PUT(
       )
     }
 
-    // Verificar se já existe outro item com o mesmo nome
     const existingExtra = await prisma.extraItem.findFirst({
       where: { 
         name,
@@ -59,7 +56,6 @@ export async function PUT(
       )
     }
 
-    // Atualizar item extra
     const updatedExtra = await prisma.extraItem.update({
       where: { id: extraId },
       data: {
@@ -96,7 +92,6 @@ export async function DELETE(
       )
     }
 
-    // Verificar se o usuário tem permissão para gerenciar extras
     const allowedRoles = ['ADMIN', 'MANAGER']
     if (!allowedRoles.includes(session.user.role as any)) {
       return NextResponse.json(
@@ -107,7 +102,6 @@ export async function DELETE(
 
     const extraId = params.id
 
-    // Verificar se o item está sendo usado em algum pedido
     const ordersWithExtra = await prisma.orderItemExtra.findFirst({
       where: { extraItemId: extraId }
     })
@@ -119,7 +113,6 @@ export async function DELETE(
       )
     }
 
-    // Excluir item extra
     await prisma.extraItem.delete({
       where: { id: extraId }
     })

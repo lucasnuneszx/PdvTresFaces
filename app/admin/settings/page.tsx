@@ -116,12 +116,10 @@ export default function SettingsPage() {
     }
 
     try {
-      // Criar FormData para enviar o arquivo
       const formData = new FormData()
       formData.append('image', file)
       formData.append('field', field)
 
-      // Fazer upload para o servidor
       const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData
@@ -129,7 +127,6 @@ export default function SettingsPage() {
 
       if (response.ok) {
         const data = await response.json()
-        // Atualizar o estado com a URL retornada
         setSettings(prev => ({
           ...prev,
           [field]: data.url

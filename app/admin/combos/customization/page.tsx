@@ -804,11 +804,9 @@ export default function ComboCustomizationManagement() {
                         <ImageUpload
                           currentImage={itemFormData.image}
                           onImageSelect={(file) => {
-                            // Handle file upload and update the image URL
                             if (file.size === 0) {
                               setItemFormData({ ...itemFormData, image: '' })
                             } else {
-                              // Create a preview URL for immediate display
                               const reader = new FileReader()
                               reader.onload = (e) => {
                                 const url = e.target?.result as string
@@ -941,11 +939,9 @@ export default function ComboCustomizationManagement() {
                         <ImageUpload
                           currentImage={optionFormData.image}
                           onImageSelect={(file) => {
-                            // Handle file upload and update the image URL
                             if (file.size === 0) {
                               setOptionFormData({ ...optionFormData, image: '' })
                             } else {
-                              // Create a preview URL for immediate display
                               const reader = new FileReader()
                               reader.onload = (e) => {
                                 const url = e.target?.result as string

@@ -52,7 +52,6 @@ export async function POST(request: NextRequest) {
 
     for (const ifoodOrder of orders) {
       try {
-        // Verificar se o pedido já existe
         const existingOrder = await prisma.order.findFirst({
           where: { ifoodOrderId: ifoodOrder.id }
         })
@@ -61,7 +60,6 @@ export async function POST(request: NextRequest) {
           continue // Pular pedidos já sincronizados
         }
 
-        // Criar ou encontrar cliente
         let user = await prisma.user.findUnique({
           where: { email: ifoodOrder.customer.email || `${ifoodOrder.customer.phone}@ifood.com` }
         })
@@ -77,7 +75,6 @@ export async function POST(request: NextRequest) {
           })
         }
 
-        // Criar endereço se necessário
         let address = null
         if (ifoodOrder.address) {
           address = await prisma.address.create({
@@ -95,7 +92,6 @@ export async function POST(request: NextRequest) {
           })
         }
 
-        // Criar pedido
         const order = await prisma.order.create({
           data: {
             userId: user.id,
@@ -117,7 +113,6 @@ export async function POST(request: NextRequest) {
           })
 
           if (!combo) {
-            // Criar combo genérico se não existir
             let defaultCategory = await prisma.category.findFirst()
             if (!defaultCategory) {
               await prisma.category.create({
@@ -150,7 +145,6 @@ export async function POST(request: NextRequest) {
           })
         }
 
-        // Registrar no caixa
         await prisma.cashLog.create({
           data: {
             orderId: order.id,
